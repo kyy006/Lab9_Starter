@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
+
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -87,6 +91,15 @@
     </section>
   </main>
 
+
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "d71c3ed88e824e9d870d08172f9c50fb"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+                        
   <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -102,7 +115,143 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    //step2 
+    let consoleLog = errorBtns[0]
+    consoleLog.addEventListener('click', () => {
+      console.log('Console Log');
+    });
+
+    let consoleError = errorBtns[1]
+    consoleError.addEventListener('click', () => {
+      console.error('Console Error');
+    });
+
+    let consoleCount = errorBtns[2]
+    consoleCount.addEventListener('click', () => {
+      console.count('Console Count');
+    });
+
+    let consoleWarn = errorBtns[3]
+    consoleWarn.addEventListener('click', () => {
+      console.warn('Console Warn');
+    });
+
+    let consoleAssert = errorBtns[4]
+    consoleAssert.addEventListener('click', () => {
+      console.assert(false, 10)
+    });
+
+    let consoleClear = errorBtns[5]
+    consoleClear.addEventListener("click", () =>{
+      console.clear()
+    });
+
+    let consoleDir = errorBtns[6]
+    consoleDir.addEventListener("click", () =>{
+      console.dir(document.location)
+    });
+
+    let consoleDirxml = errorBtns[7]
+    consoleDirxml.addEventListener("click", () =>{
+      console.dirxml(document.location)
+
+    });
+
+
+    let consoleGroupStart = errorBtns[8]
+    consoleGroupStart.addEventListener("click", () =>{
+      console.group()
+    });
+
+    let consoleGroupEnd = errorBtns[9]
+    consoleGroupEnd.addEventListener("click", () =>{
+      console.groupEnd()
+    });
+
+    let consoleTable = errorBtns[10]
+    consoleTable.addEventListener("click", () =>{
+      console.table([
+          {
+            name: "Software Engineering",
+            num: "110",
+          },
+          {
+            name: "Programming Languages: Principles and Paradigms",
+            num: "130",
+          },
+          {
+            name: "Computer Security",
+            num: "127",
+          },
+        ]);
+    });
+
+    let startTimer = errorBtns[11]
+    startTimer.addEventListener("click", () =>{
+      console.time("this is a timer")
+    });
+
+
+    let endTimer = errorBtns[12]
+    endTimer.addEventListener("click", () =>{
+      console.timeEnd("this is a timer")
+    });
+
+
+    let consoleTrace = errorBtns[13]
+    consoleTrace.addEventListener("click", () =>{
+      console.trace(consoleLog, consoleError)
+    });
+
+    let globalError = errorBtns[14]
+    globalError.addEventListener("click", () =>{
+      console.log("Console Log Trigger Big Error")
+      thisIsError = thisIsError + 1;
+    });
+
+
+
+    //step 3
+    try {
+      let obj = document.querySelector('p').value;
+      console.log(obj);
+    } catch (err){
+      console.error(err);
+    } finally {
+      console.log("Last step of the try catch block");
+    } 
+
+
+    //step 4
+    class CustomError extends Error{
+      constructor(message){
+        super(message); 
+        this.name = 'CustomError';
+      }
+    }
+
+    try {
+      throw new CustomError('This is a custom error');
+    } catch (err){
+      console.error(err);
+    } finally {
+      console.log("Last step of the try catch block");
+    }
+    //step 5
+    TrackJS.track('Testing TrackJS!');
+                        
+    try{
+      // create global error here
+      const randomVar = randomVar + 1;
+
+
+    } catch(err){
+      console.log("Error:", err);
+    }
   </script>
 </body>
 
 </html>
+
+
+
